@@ -1,14 +1,16 @@
 import React from "react"
 
 import Layout from "../components/layout"
+import Image from "../components/image"
 import SEO from "../components/seo"
-import { Link } from "gatsby";
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Posts" />
-    <h1>/posts</h1>
-    <Link to="/deploying-selenium-grid-on-aws"><h2>Deploying Selenium Grid on AWS</h2></Link>
+    <SEO title="Projects" />
+    <h1>/projects</h1>
+    <p>
+      <Image />
+    </p>
   </Layout>
 )
 

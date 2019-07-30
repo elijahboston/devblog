@@ -1,0 +1,31 @@
+header nav {
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    padding: 1.45rem 1.0875rem 1.45rem;
+}
+
+header nav .site-title {
+    color: white;
+    margin-right: 1.45rem;
+}
+
+header nav .site-title h2 {
+    margin: 0;
+}
+
+header nav .nav-items a {
+    margin: 0 .5rem 0 0;
+    text-transform: lowercase;
+    text-decoration: none;
+    font-weight: bold;
+    color: gainsboro;
+}
+
+header nav .nav-items a::before {
+    content: '/'
+}
+
+header nav .nav-items a:hover {
+    color: orange;
+}

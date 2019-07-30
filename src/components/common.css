@@ -1,0 +1,11 @@
+.layout .page-body,
+header nav {
+    width: 60%;
+}
+
+@media only screen and (max-width: 900px) {
+    .layout .page-body,
+    header div {
+        width: 85%;
+    }
+}

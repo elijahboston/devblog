@@ -14,3 +14,4 @@ artifacts:
   files:
     - public/*
   name: devblog-$(date +%Y-%m-%d)-$(CODEBUILD_START_TIME)
+  base-directory: devblog/public

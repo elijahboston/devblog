@@ -1,6 +1,6 @@
 ---
 path: "/deploying-selenium-grid-on-aws"
-date: "7-29-19"
+date: "2019-05-04"
 title: "Deploying Selenium Grid on AWS"
 ---
 

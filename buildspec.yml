@@ -1,0 +1,12 @@
+phases:
+  install:
+    runtime-versions:
+      nodejs: 10
+  build:
+    commands:
+      - npm run build
+
+artifacts:
+  files:
+    - public/*
+  name: devblog-$(date +%Y-%m-%d)-$(CODEBUILD_START_TIME)

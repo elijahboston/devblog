@@ -11,6 +11,7 @@ phases:
       - npm run build
   post_build:
     command:
+      - npm run deploy
 artifacts:
     base-directory: public
     files:

@@ -1,3 +1,5 @@
+const targetAddress = new URL(process.env.TARGET_ADDRESS || `http://blog.joshwalsh.local`);
+
 module.exports = {
   siteMetadata: {
     title: `elijah boston`,
@@ -34,7 +36,26 @@ module.exports = {
         path: `${__dirname}/src/posts/`,
       },
     },
-    `gatsby-transformer-remark`
+    `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-plugin-s3`,
+      options: {
+          bucketName: process.env.TARGET_BUCKET_NAME || "fake-bucket",
+          region: process.env.AWS_REGION,
+          protocol: targetAddress.protocol.slice(0, -1),
+          hostname: targetAddress.hostname,
+          acl: null,
+          params: {
+              // In case you want to add any custom content types: https://github.com/jariz/gatsby-plugin-s3/blob/master/recipes/custom-content-type.md
+          },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+          siteUrl: targetAddress.href.slice(0, -1),
+      },
+    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

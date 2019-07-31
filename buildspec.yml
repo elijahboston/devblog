@@ -11,8 +11,13 @@ phases:
       - npm run build
   post_build:
     command:
-      - mv /devblog/public/* .
-      - rm -rf devblog
-artifacts: 
-  files:        
-    - '**/*'
+artifacts:
+    base-directory: public
+    files:
+        - '**/*'
+    discard-paths: no
+cache:
+    paths:
+        - '.cache/*'
+        - 'node_modules/*'
+        - 'public/*'

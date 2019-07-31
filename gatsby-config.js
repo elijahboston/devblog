@@ -1,4 +1,4 @@
-const targetAddress = new URL(process.env.TARGET_ADDRESS || `http://blog.joshwalsh.local`);
+const targetAddress = new URL(process.env.TARGET_ADDRESS || `http://www.elijahboston.com`);
 
 module.exports = {
   siteMetadata: {

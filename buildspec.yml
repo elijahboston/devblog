@@ -15,5 +15,5 @@ phases:
       - rm -rf devblog
 artifacts:
   files:
-    - devblog/public/*
+    - /*
   name: devblog-$(date +%Y-%m-%d)-$(CODEBUILD_START_TIME)

@@ -31,6 +31,8 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "GATSBY_GRAPHQL_IDE=playground gatsby develop",
+    "deploy": "gatsby-plugin-s3 deploy --yes",
+    "invalidate-cloudfront": "aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION --paths \"/*\"",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",

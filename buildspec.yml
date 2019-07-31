@@ -9,11 +9,8 @@ phases:
   build:
     commands:
       - npm run build
-  post_build:
-    command:
-      - mv /devblog/public/* .
-      - rm -rf devblog
 artifacts:
+  base-directory: public
   files:
-    - /*
-  name: devblog-$(date +%Y-%m-%d)-$(CODEBUILD_START_TIME)
+    - '**/*'    
+  discard-paths: yes

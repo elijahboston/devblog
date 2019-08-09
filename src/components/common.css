@@ -1,11 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Anonymous+Pro|Open+Sans&display=swap');
+
+body, html, h1, h2, h3, h4, p {
+    font-family: 'Open Sans', sans-serif;
+}
+
+pre {
+    font-family: 'Anonymous Pro', monospace;
+}
+
 .layout .page-body,
 header nav {
-    width: 60%;
+    width: 70%;
 }
 
 @media only screen and (max-width: 900px) {
     .layout .page-body,
-    header div {
-        width: 85%;
+    header nav {
+        width: 100%;
     }
 }

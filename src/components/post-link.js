@@ -2,9 +2,9 @@ import React from "react"
 import { Link } from "gatsby"
 const PostLink = ({ post }) => (
   <div>
-    <Link to={post.frontmatter.path}>
+    <h3><Link to={post.frontmatter.path}>
       {post.frontmatter.title}
-    </Link>
+    </Link></h3>
   </div>
 )
 export default PostLink

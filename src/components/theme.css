@@ -1,0 +1,13 @@
+body {
+    background: #eee8d5;
+    color: #073642;
+}
+
+a {
+    font-weight: bold;
+    color: #cb4b16;
+}
+
+a:hover {
+    color: #dc322f;
+}

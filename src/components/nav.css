@@ -6,7 +6,6 @@ header nav {
 }
 
 header nav .site-title {
-    color: white;
     margin-right: 1.45rem;
 }
 
@@ -19,13 +18,8 @@ header nav .nav-items a {
     text-transform: lowercase;
     text-decoration: none;
     font-weight: bold;
-    color: gainsboro;
 }
 
 header nav .nav-items a::before {
     content: '/'
-}
-
-header nav .nav-items a:hover {
-    color: orange;
 }

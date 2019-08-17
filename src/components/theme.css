@@ -3,11 +3,7 @@ body {
     color: #073642;
 }
 
-a {
-    font-weight: bold;
-    color: #cb4b16;
-}
-
-a:hover {
-    color: #dc322f;
+html * {
+    color-profile: sRGB;
+    rendering-intent: auto;
 }

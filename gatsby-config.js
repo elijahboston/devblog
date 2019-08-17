@@ -5,6 +5,20 @@ module.exports = {
     title: `elijah boston`,
     description: `Developer at large`,
     author: `elijah@9triangles.com`,
+    nav: [
+      {
+        label: 'about-me',
+        value: '/about-me'
+      },
+      {
+        label: 'posts',
+        value: '/posts'
+      },
+      {
+        label: 'projects',
+        value: '/projects'
+      }
+    ]
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -55,7 +69,8 @@ module.exports = {
       options: {
           siteUrl: targetAddress.href.slice(0, -1),
       },
-    }
+    },
+    `gatsby-plugin-styled-components`
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

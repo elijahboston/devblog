@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
+
 const PostLink = ({ post }) => (
   <div>
     <h3><Link to={post.frontmatter.path}>

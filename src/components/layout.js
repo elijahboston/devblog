@@ -1,20 +1,50 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from "react"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
-import styled, { ThemeProvider } from "styled-components"
+import styled, { ThemeProvider, createGlobalStyle } from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
-import solarizedDark from "../themes/solarized-dark";
+import theme from "../themes/mars-dark"
 
-import "./reset.css"
-import "./theme.css"
-import "./typography.css"
+const GlobalStyle = createGlobalStyle`
+  body {
+    background-color: ${props => props.theme.bgColor};
+    color: ${props => props.theme.textColor};
+  }
+
+  html * {
+    color-profile: sRGB;
+    rendering-intent: auto;
+  }
+
+  a {
+    color: ${props => props.theme.linkColor};
+  }
+
+  a:visited {
+    color: ${props => props.theme.linkColor};
+  }
+
+  a:hover, a:active {
+    color: ${props => props.theme.linkHoverColor};
+  }
+
+  h1, h2, h3, h4, h5 {
+    color: ${props => props.theme.headerColor};
+  }
+
+  .normal-header {
+  }
+
+  .sticky-header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+  }
+
+  .sticky-header-active {
+    margin-top: 100px;
+  }
+`
 
 const LayoutWrapper = styled.div`
   display: flex;
@@ -34,14 +64,17 @@ const PageBody = styled.div`
 `
 
 const Header = styled.header`
+  background-size: 100%;
   margin-bottom: 1.45rem;
 `
 
-const HeaderLink = styled(props => <Link activeStyle={{ color: solarizedDark.activeLinkColor }} { ...props } />)`
-  color: ${props => props.theme.linkColor};
+const HeaderLink = styled(props => <Link activeStyle={{ color: theme.activeLinkColor }} { ...props } />)`
+  color: white;
+  text-decoration: none;
+  font-family: 'Unica One', cursive;
 
   &:visited {
-    color: ${props => props.theme.linkColor};
+    color: white;
   }
 
   &:hover, &:active {
@@ -69,24 +102,43 @@ const SiteTitleText = styled.h2`
   margin: 0;
 `;
 
-const isPartiallyActive = ({ isPartiallyCurrent, location }) => {
-  const active = { style: {color: 'blue'} };
-  const isIndex = location.pathname === '/';
-
-  if (isIndex || (!isIndex && isPartiallyCurrent)) {
-    return active;
+const StylishHorizontalRule = styled.div`
+  &:before,
+  &:after {
+    content: "";
+    width: 100%;
+    position: absolute;
+    left: 0;
+    height: 2px;
   }
-}
 
-const NavLink = styled(props => <Link partiallyActive={true} activeStyle={{ color: solarizedDark.activeLinkColor }} { ...props } />)`
+  &:before {
+    background: linear-gradient( 90deg, ${props => props.theme.bgColor} 0%, ${props => props.theme.bgColor} 50%, transparent 50%, transparent 100% );
+    background-size: 10px;
+    background-position: center;
+    z-index: 1;
+  }
+
+  &:after {
+    background: linear-gradient(to right,
+      rgba(0,0,0,0) 0%,
+      rgba(220,50,47,0.77) 53%,
+      rgba(220,50,47,1) 69%); 
+
+    background-size: 200%;
+    background-position: 0%;
+  }
+`;
+
+const NavLink = styled(props => <Link partiallyActive={true} activeStyle={{ color: theme.activeLinkColor }} { ...props } />)`
   margin: 0 .5rem 0 0;
   text-transform: lowercase;
   text-decoration: none;
   font-weight: bold;
-  color: ${props => props.theme.linkColor};
+  color: white;
 
   &:visited {
-    color: ${props => props.theme.linkColor};
+    color: white;
   }
 
   &:hover, &:active {
@@ -123,31 +175,35 @@ const Layout = ({ children }) => {
   } = data;
 
   return (
-    <ThemeProvider theme={solarizedDark}>
-      <LayoutWrapper>
-        <Header>
-          <Nav>
-            <SiteTitle>
-              <SiteTitleText>
-                <HeaderLink to='/'>
-                  {title}
-                </HeaderLink>
-              </SiteTitleText>
-            </SiteTitle>
-            <div>
-              {nav.map(item => <NavLink key={item.label} to={item.value}>{item.label}</NavLink>)}
-            </div>
-          </Nav>
-        </Header>
-        <PageBody>
-          <main>{children}</main>
-          <footer>
-            © {new Date().getFullYear()}, Built with
-            {` `}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
-          </footer>
-        </PageBody>
-      </LayoutWrapper>
+    <ThemeProvider theme={theme}>
+      <React.Fragment>
+        <GlobalStyle />
+        <LayoutWrapper>
+          <Header>
+            <Nav>
+              <SiteTitle>
+                <SiteTitleText>
+                  <HeaderLink to='/'>
+                    {title}
+                  </HeaderLink>
+                </SiteTitleText>
+              </SiteTitle>
+              <div>
+                {nav.map(item => <NavLink key={item.label} to={item.value}>{item.label}</NavLink>)}
+              </div>
+            </Nav>
+            <StylishHorizontalRule />
+          </Header>
+          <PageBody>
+            <main>{children}</main>
+            <footer>
+              © {new Date().getFullYear()}, Built with
+              {` `}
+              <a href="https://www.gatsbyjs.org">Gatsby</a>
+            </footer>
+          </PageBody>
+        </LayoutWrapper>
+      </React.Fragment>
     </ThemeProvider>
   )
 }

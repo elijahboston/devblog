@@ -1,8 +1,8 @@
-import React from "react"
-import { Link } from "gatsby"
 import styled from "styled-components"
 
-const PostLink = styled(props => <Link { ...props } />)`
+const ExternalLink = styled.a`
+  text-decoration: none;
+  font-weight: bold;
   color: ${props => props.theme.linkColor};
 
   &:visited {
@@ -14,4 +14,4 @@ const PostLink = styled(props => <Link { ...props } />)`
   }
 `
 
-export default PostLink
+export default ExternalLink;

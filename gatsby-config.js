@@ -2,7 +2,7 @@ const targetAddress = new URL(process.env.TARGET_ADDRESS || `https://www.elijahb
 
 module.exports = {
   siteMetadata: {
-    title: `elijah boston`,
+    title: `Elijah Boston`,
     description: `Developer at large`,
     author: `elijah@9triangles.com`,
     nav: [
@@ -43,6 +43,7 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
+    // Data Source -- Filesystem (For loading Markdown)
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -50,19 +51,26 @@ module.exports = {
         path: `${__dirname}/src/posts/`,
       },
     },
-    `gatsby-transformer-remark`,
+    // Transformer -- Markdown
     {
-      resolve: `gatsby-plugin-s3`,
+      resolve: 'gatsby-transformer-remark',
       options: {
-          bucketName: process.env.TARGET_BUCKET_NAME || "fake-bucket",
-          region: process.env.AWS_REGION,
-          protocol: targetAddress.protocol.slice(0, -1),
-          hostname: targetAddress.hostname,
-          acl: null,
-          params: {
-              // In case you want to add any custom content types: https://github.com/jariz/gatsby-plugin-s3/blob/master/recipes/custom-content-type.md
-          },
-      },
+        plugins: [
+          {
+            resolve: "gatsby-remark-prismjs",
+            options: {
+              classPrefix: "language-",
+              inlineCodeMarker: null,
+              showLineNumbers: true,
+              prompt: {
+                user: "root",
+                host: "localhost",
+                global: false,
+              },
+            },
+          }
+        ],
+      }
     },
     {
       resolve: `gatsby-plugin-canonical-urls`,
@@ -70,6 +78,24 @@ module.exports = {
           siteUrl: targetAddress.href.slice(0, -1),
       },
     },
+    // Data Source -- GraphQL
+    {
+      resolve: "gatsby-source-graphql",
+      options: {
+        typeName: "GitHub",
+        fieldName: "github",
+        // Url to query from
+        url: "https://api.github.com/graphql",
+        // HTTP headers
+        headers: {
+          // Learn about environment variables: https://gatsby.dev/env-vars
+          Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+        },
+        // Additional options to pass to node-fetch
+        fetchOptions: {},
+      },
+    },
+    // Styled Components
     `gatsby-plugin-styled-components`
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline

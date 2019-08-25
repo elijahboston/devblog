@@ -1,4 +1,7 @@
 const palette = {
+    lightestGray:   '#cecccc',
+    darkGray:       '#313131',
+    darkerGray:     '#272727',
     base03:    '#002b36',
     base02:    '#073642',
     base01:    '#586e75',
@@ -10,6 +13,7 @@ const palette = {
     yellow:    '#b58900',
     orange:    '#cb4b16',
     red:       '#dc322f',
+    lightRed:  '#e67d7b',
     magenta:   '#d33682',
     violet:    '#6c71c4',
     blue:      '#268bd2',
@@ -18,13 +22,13 @@ const palette = {
 };
 
 export default {
-    linkColor: palette.base1,
-    linkHoverColor: palette.blue,
-    activeLinkColor: palette.blue,
-    bgColor: palette.base03,
+    linkColor: palette.lightRed,
+    linkHoverColor: palette.red,
+    activeLinkColor: palette.red,
+    bgColor: palette.darkGray,
     bgColor2: palette.base02,
-    textColor: palette.base1,
-    headerColor: palette.base1,
+    textColor: palette.lightestGray,
+    headerColor: palette.red,
     tagColor: palette.orange,
-    tagBgColor: palette.base02,
+    tagBgColor: palette.darkerGray,
 }

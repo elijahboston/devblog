@@ -35,33 +35,40 @@ const projects = [
   }
 ];
 
-const Item = styled.div``
-const Title = styled.h3`
-  margin-bottom: 0;
+const Item = styled.div`
+  padding: 1.45rem 1.45rem 0;
 `
-const Description = styled.p`
-  margin-left: 1.45rem;
-`;
+
+const Title = styled.h3``
+
+const Description = styled.p``;
+
 const Details = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 1.45rem;
-  margin-left: 1.45rem;
-`;
+`
 
 const TechList = styled.ul`
   margin: 0;
-  pading: 0;
+  padding: 0;
   display: inline-block;
+  margin-bottom: 1.45rem;
 `
+
 const TechItem = styled.li`
   display: inline-block;
   margin: 0 .2rem;
   list-style-type: none;
-  background: #d3d3d3;
+  background: ${props => props.theme.tagBgColor};
+  color: ${props => props.theme.tagColor};
   padding: .1rem .5rem;
   border-radius: .3rem;
   font-size: .9rem;
+
+  &:first-child {
+    margin-left: 0;
+  }
 `
 
 const DetailSubtitle = styled.div`
@@ -73,27 +80,31 @@ const DetailSubtitle = styled.div`
 
 const ProjectItem = ({name, url, date, clientName, description, tech }) => <Item>
     <Title>{name}</Title>
+    <TechList>
+          {tech.map(name => <TechItem key={name}>
+            {name}
+          </TechItem>)}
+    </TechList>
     <Description>
       {description}
     </Description>
     <Details>
-      <div className='tech-details'>
-        <DetailSubtitle>Tech:</DetailSubtitle>
-        <TechList>
-          {tech.map(name => <TechItem>
-            {name}
-          </TechItem>)}
-        </TechList>
-      </div>
-
       <span className='project-url'>
         <DetailSubtitle>URL:</DetailSubtitle>
         {url && <a href={url}>{url}</a>}
         {!url && 'Internal Project'}
       </span>
 
-      {clientName && <span className='client-name'><DetailSubtitle>Client:</DetailSubtitle>{clientName}</span>}
-      <time>{date}</time>
+      {clientName &&
+        <span className='client-name'>
+          <DetailSubtitle>Client:</DetailSubtitle>
+          {clientName}
+        </span>}
+
+      <span className='project-time'>
+        <DetailSubtitle>Dates:</DetailSubtitle>
+        <time>{date}</time>
+      </span>
     </Details>
 </Item>
 

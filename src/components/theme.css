@@ -1,9 +1,0 @@
-body {
-    background: #eee8d5;
-    color: #073642;
-}
-
-html * {
-    color-profile: sRGB;
-    rendering-intent: auto;
-}

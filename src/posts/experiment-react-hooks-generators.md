@@ -1,17 +1,18 @@
 ---
-path: "/react-hooks-with-generators"
+path: "/experiment-react-hooks-with-generators"
 date: "2019-05-04"
-title: "Using React Hooks with Generators"
-summary: "I "
+title: "Experiment: Using React Hooks with Generators"
+summary: "Sometimes when I encounter a concept that's hard for me to wrap my head around I find it helps to try using the concept in an actual scenario. For this article we'll learn a bit about ES6 generators by building a very simple React app to demonstrate their behavior."
 ---
+Generators allow you to pause the execution of a function and resume it later. This is incredibly useful when you *don't* want to iterate over an array all at once, and the behavior pairs nicely with React giving us the capability to control *what's* render and *when*.
 
-# Using React Hooks with Generators
-Generators allow you to pause the execution of a function and resume it later. This is incredibly useful when you *don't* want to iterate over an array all at once, and the behavior pairs nicely with React giving us the capability to control *what's* render and *when*. Combining these gives us the ability to "pre-load" data on the client, and load it as needed. This is a *super* useful pattern if you have a really long list and don't want to show everything at once.
+It's a little hard to conceptualize without seeing it in action, so I decided to build a really simple React app to demonstrate how it works.
 
-## Situation
-Suppose that being the clever developers we are, we fetch all of our data up-front, but we only want to display one item at a time.
+**Disclaimer:** You can do everything we're about to do with just the `useState` hook, and it'll be much easier. This is just very simple demonstration of genrators using React to provide visual feedback.
 
 ## Data Source and Components
+Suppose that being the clever developers we are, we fetch all of our data up-front, but we only want to display one item at a time.
+
 To start off with we'll use a simple variable to act as our "data source", and setup a few components to handle displaying the label for each item.
 
 ```javascript
@@ -129,9 +130,10 @@ function handleClick() {
 }
 ```
 
-### [See the completed project here](https://codesandbox.io/s/react-usestate-with-generator-5bc45) or via Codesandbox below.
+Now when you click the button more than 3 times, it'll just stop trying to update the state.
 
+[See the completed project here](https://codesandbox.io/s/iterative-loading-with-generator-5bc45) or via Codesandbox below.
 
 ## Code Sandbox
 
-https://codesandbox.io/s/react-usestate-with-generator-5bc45
+https://codesandbox.io/s/iterative-loading-with-generator-5bc45

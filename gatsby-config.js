@@ -7,16 +7,16 @@ module.exports = {
     author: `elijah@9triangles.com`,
     nav: [
       {
-        label: 'about-me',
-        value: '/about-me'
+        label: 'About',
+        value: 'about'
       },
       {
-        label: 'posts',
-        value: '/posts'
+        label: 'Posts',
+        value: 'posts'
       },
       {
-        label: 'projects',
-        value: '/projects'
+        label: 'Projects',
+        value: 'projects'
       }
     ]
   },
@@ -35,12 +35,12 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `gatsby-starter-default`,
-        short_name: `starter`,
+        short_name: `eb`,
         start_url: `/`,
         background_color: `#eee8d5`,
         theme_color: `#eee8d5`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/favicon/favicon-32x32.png`, // This path is relative to the root of the site.
       },
     },
     // Data Source -- Filesystem (For loading Markdown)

@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
+import Header from "./header"
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
 import theme from "../themes/mars-dark"
@@ -63,45 +64,6 @@ const PageBody = styled.div`
   }
 `
 
-const Header = styled.header`
-  background-size: 100%;
-  margin-bottom: 1.45rem;
-`
-
-const HeaderLink = styled(props => <Link activeStyle={{ color: theme.activeLinkColor }} { ...props } />)`
-  color: white;
-  text-decoration: none;
-  font-family: 'Unica One', cursive;
-
-  &:visited {
-    color: white;
-  }
-
-  &:hover, &:active {
-    color: ${props => props.theme.linkHoverColor};
-  }
-`
-
-const Nav = styled.nav`
-  display: flex;
-  margin: 0 auto;
-  align-items: center;
-  padding: 1.45rem 1.0875rem 1.45rem;
-  width: 70%;
-
-  @media only screen and (max-width: 900px) {
-    width: 100%;
-  }
-`
-
-const SiteTitle = styled.div`
-  margin-right: 1.45rem;
-`
-
-const SiteTitleText = styled.h2`
-  margin: 0;
-`;
-
 const StylishHorizontalRule = styled.div`
   &:before,
   &:after {
@@ -121,34 +83,12 @@ const StylishHorizontalRule = styled.div`
 
   &:after {
     background: linear-gradient(to right,
-      rgba(0,0,0,0) 0%,
-      rgba(220,50,47,0.77) 53%,
-      rgba(220,50,47,1) 69%); 
+      rgba(0,0,0,0) 0%,rgba(0, 0, 0, 0.77) 53%,rgb(255, 255, 255) 69%); 
 
     background-size: 200%;
     background-position: 0%;
   }
 `;
-
-const NavLink = styled(props => <Link partiallyActive={true} activeStyle={{ color: theme.activeLinkColor }} { ...props } />)`
-  margin: 0 .5rem 0 0;
-  text-transform: lowercase;
-  text-decoration: none;
-  font-weight: bold;
-  color: white;
-
-  &:visited {
-    color: white;
-  }
-
-  &:hover, &:active {
-    color: ${props => props.theme.linkHoverColor};
-  }
-
-  &::before {
-    content: '/';
-  }
-`
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -179,21 +119,7 @@ const Layout = ({ children }) => {
       <React.Fragment>
         <GlobalStyle />
         <LayoutWrapper>
-          <Header>
-            <Nav>
-              <SiteTitle>
-                <SiteTitleText>
-                  <HeaderLink to='/'>
-                    {title}
-                  </HeaderLink>
-                </SiteTitleText>
-              </SiteTitle>
-              <div>
-                {nav.map(item => <NavLink key={item.label} to={item.value}>{item.label}</NavLink>)}
-              </div>
-            </Nav>
-            <StylishHorizontalRule />
-          </Header>
+          <Header title={title} nav={nav}/>
           <PageBody>
             <main>{children}</main>
             <footer>

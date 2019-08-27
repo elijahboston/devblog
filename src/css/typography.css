@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Anonymous+Pro|Unica+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Unica+One|Material+Icons&display=swap');
 
 html, body, p {
     font-family: 'Open Sans', sans-serif;
 }
 
 h1, h2, h3, h4 {
-    font-family: 'Anonymous Pro', monospace;
+    font-family: 'Open Sans', sans-serif;
 }

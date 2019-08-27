@@ -18,7 +18,7 @@ const PostsPage = (
 
   return(<Layout>
     <SEO title="Posts" />
-    <h1>/posts</h1>
+    <h1>Posts</h1>
     {posts}
   </Layout>);
 }

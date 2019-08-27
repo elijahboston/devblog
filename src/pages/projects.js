@@ -111,7 +111,7 @@ const ProjectItem = ({name, url, date, clientName, description, tech }) => <Item
 const ProjectsPage = () => (
   <Layout>
     <SEO title="Projects" />
-    <h1>/projects</h1>
+    <h1>Projects</h1>
     {projects.map(props => <ProjectItem key={props.name} { ...props }/>)}
   </Layout>
 )

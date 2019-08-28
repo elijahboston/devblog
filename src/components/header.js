@@ -5,9 +5,11 @@ import styled, { ThemeConsumer } from "styled-components"
 const HeaderStyle = styled.header`
     background-size: 100%;
     margin-bottom: 1.45rem;
-
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+
+    transition: background-color .5s;
+    backdrop-filter: blur(2px);
 `
 
 const SiteTitleLink = styled(props => <Link activeClassName='active' { ...props } />)`
@@ -19,7 +21,7 @@ const SiteTitleLink = styled(props => <Link activeClassName='active' { ...props 
     padding: 1.45rem 1.0875rem 1.45rem;
 
     &:visited {
-        color: white;
+        color: ${props => props.theme.linkColor};
     }
 
     &:hover, &:active {
@@ -37,10 +39,6 @@ const Nav = styled.nav`
     padding: 1.45rem 1.0875rem 1.45rem;
 
     align-self: flex-end;
-
-    @media only screen and (max-width: 900px) {
-
-    }
 `
 
 const NavLink = styled(props => <Link partiallyActive={true} activeClassName='active' { ...props } />)`
@@ -53,7 +51,7 @@ const NavLink = styled(props => <Link partiallyActive={true} activeClassName='ac
     padding: .2rem .6rem;
 
     &:visited {
-        color: white;
+        color: ${props => props.theme.linkColor};
     }
 
     &:hover, &:active {
@@ -65,15 +63,27 @@ const NavLink = styled(props => <Link partiallyActive={true} activeClassName='ac
     }
 `
 
+const HeaderWrap = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+    @media only screen and (max-width: 900px) {
+        width: 100%;
+    }
+`
+
 const Header = ({ title, nav }) => {
     return (
         <HeaderStyle>
-            <SiteTitleLink to='/'>
-                {title}
-            </SiteTitleLink>
-            <Nav>
-                {nav.map(item =><NavLink key={item.label} to={item.value}>{item.label}</NavLink>)}
-            </Nav>
+            <HeaderWrap>
+                <SiteTitleLink to='/'>
+                    {title}
+                </SiteTitleLink>
+                <Nav>
+                    {nav.map(item =><NavLink key={item.label} to={item.value}>{item.label}</NavLink>)}
+                </Nav>
+            </HeaderWrap>
         </HeaderStyle>
     )
 }

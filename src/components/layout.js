@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 import Header from "./header"
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
-import theme from "../themes/mars-dark"
+import theme from "../themes/mars-light"
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -40,6 +40,7 @@ const GlobalStyle = createGlobalStyle`
     position: fixed;
     width: 100%;
     top: 0;
+    background-color: rgba(${props => props.theme.bgColor2RGB}, .8);
   }
 
   .sticky-header-active {
@@ -64,30 +65,8 @@ const PageBody = styled.div`
   }
 `
 
-const StylishHorizontalRule = styled.div`
-  &:before,
-  &:after {
-    content: "";
-    width: 100%;
-    position: absolute;
-    left: 0;
-    height: 2px;
-  }
-
-  &:before {
-    background: linear-gradient( 90deg, ${props => props.theme.bgColor} 0%, ${props => props.theme.bgColor} 50%, transparent 50%, transparent 100% );
-    background-size: 10px;
-    background-position: center;
-    z-index: 1;
-  }
-
-  &:after {
-    background: linear-gradient(to right,
-      rgba(0,0,0,0) 0%,rgba(0, 0, 0, 0.77) 53%,rgb(255, 255, 255) 69%); 
-
-    background-size: 200%;
-    background-position: 0%;
-  }
+const Footer = styled.footer`
+  font-size: .7rem;
 `;
 
 const Layout = ({ children }) => {
@@ -109,7 +88,7 @@ const Layout = ({ children }) => {
     site: {
       siteMetadata: {
         title,
-        nav
+        nav,
       }
     }
   } = data;
@@ -122,11 +101,11 @@ const Layout = ({ children }) => {
           <Header title={title} nav={nav}/>
           <PageBody>
             <main>{children}</main>
-            <footer>
-              © {new Date().getFullYear()}, Built with
+            <Footer>
+              © {new Date().getFullYear()} Elijah Boston. Built with
               {` `}
-              <a href="https://www.gatsbyjs.org">Gatsby</a>
-            </footer>
+              <a href="https://www.gatsbyjs.org">Gatsby</a>.
+            </Footer>
           </PageBody>
         </LayoutWrapper>
       </React.Fragment>

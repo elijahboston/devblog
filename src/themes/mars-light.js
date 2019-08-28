@@ -1,4 +1,5 @@
 const palette = {
+    white:          '#ffffff',
     black:          '#000000',
     lightestGray:   '#cecccc',
     darkGray:       '#313131',
@@ -11,13 +12,15 @@ const palette = {
 };
 
 export default {
-    linkColor: palette.blue,
-    linkHoverColor: palette.blue,
-    activeLinkColor: palette.blue,
-    bgColor: palette.greyBlue,
-    bgColor2: palette.base0,
-    textColor: palette.darkerGray,
-    headerColor: palette.blue,
-    tagColor: palette.blue,
-    tagBgColor: palette.darkerGray,
+    linkColor:          palette.blue,
+    linkHoverColor:     palette.cyan,
+    activeLinkColor:    palette.blue,
+    bgColor:            palette.white,
+    bgColorRGB:         '',
+    bgColor2:           palette.lightestGray,
+    bgColor2RGB:        '239,239,239', 
+    textColor:          palette.black,
+    headerColor:        palette.black,
+    tagColor:           palette.lightestGray,
+    tagBgColor:         palette.darkerGray,
 }

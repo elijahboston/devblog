@@ -35,9 +35,7 @@ const projects = [
   }
 ];
 
-const Item = styled.div`
-  padding: 1.45rem 1.45rem 0;
-`
+const Item = styled.div``
 
 const Title = styled.h3``
 

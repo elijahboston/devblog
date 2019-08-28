@@ -7,43 +7,10 @@ const IndexPage = () => (
   <Layout>
     <SEO title="About" />
     <h1>About Me</h1>
-    <p>
-      I made my first website at 13 and I've been writing code every since. I specialize in building web apps and automation, utilizing cloud services and containerization.
-    </p>
-
-    <h3>Languages</h3>
-    <ul>
-      <li>Javascript (ES5 + ES6)</li>
-      <li>Python</li>
-    </ul>
-
-    <h3>Frameworks & Libraries</h3>
-    <ul>
-      <li>Node.js</li>
-      <li>React</li>
-      <li>GraphQL</li>
-    </ul>
-
-    <h3>CI/CD + Testing</h3>
-    <ul>
-      <li>Jenkins</li>
-      <li>Mocha</li>
-      <li>Selenium</li>
-      <li>AVA</li>
-    </ul>
-
-    <h3>Container Orchestration</h3>
-    <ul>
-      <li>Docker Swarm</li>
-      <li>Kubernetes</li>
-    </ul>
-
-    <h3>AWS Cloud Services</h3>
-    <ul>
-      <li>S3</li>
-      <li>ECS</li>
-      <li>EC2</li>
-    </ul>
+    <p>I graduated in 2010 with a <i>Bachelors of Science in Computer Engineering from the University of South Florida</i>, with a minor in Physics.</p>
+    <p>For the better part of a decade I've worked in various aspects of web development from frontend design, to backend API development, to managing infrastructure and automated processes.</p>
+    <p>My interest in technology and web development has been lifelong. I made my first website at 13 on Geocities, taught myself Python during college, and setup my first server on an old Dell Optiplex around the same time.</p>
+    <p>In my free time I enjoy travel, DJ'ing, gaming, and binging Netflix.</p>
   </Layout>
 )
 

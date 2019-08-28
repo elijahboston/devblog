@@ -8,7 +8,7 @@ useEffect replaces `componentDidMount` and `componentWillUpdate` to handle any s
 ```javascript
 useEffect(() => { ... })
 ```
-So I wondered, how would we use async functions in there? My first instinct was obviously to just make the inner function async:
+So I wondered, how would we use async functions in there? My first instinct was to just make the inner function async:
 ```javascript
 // INCORRECT
 useEffect(async () => {
@@ -17,7 +17,7 @@ useEffect(async () => {
 })
 ```
 
-React will yell at you if you try this though. See, `useEffect` *must be a synchornous function*, but there's nothing stopping us from *creating an async function inside of it*.
+React will yell at you if you try this though. See, `useEffect` *must be a synchronous function*, but there's nothing stopping us from *creating an async function inside of it*.
 
 ```javascript
 // Almost there...
@@ -63,3 +63,5 @@ Now we can load data asynchronously without blocking our thread. Another way to 
 1. Handling error responses.
 2. Preventing data from being fetched again if it's already loaded.
 3. When/how to mark data as "stale" so fresh data can be fetched.
+
+To see an advanced use of `useEffect` check out my post on [Using Generators with React](/using-generators-with-react)

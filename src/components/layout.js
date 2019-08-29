@@ -19,6 +19,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   a {
+    color: ${props => props.theme.linkColor};
     transition: filter .5s ease;
   }
 

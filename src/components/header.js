@@ -20,7 +20,7 @@ const SiteTitleLink = styled(props => <Link activeClassName='active' { ...props 
 
     padding: 1.45rem 1.0875rem 1.45rem;
 `
-//text-shadow: 1px 1px 0px #DB63DB, -1px -1px 0px #0BEFFF;
+
 const Nav = styled.nav`
     display: flex;
     align-items: center;

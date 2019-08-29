@@ -63,6 +63,7 @@ const HeaderWrap = styled.div`
     justify-content: space-between;
     align-items: center;
     width: 70%;
+    max-width: 960px;
     @media only screen and (max-width: 900px) {
         width: 100%;
     }

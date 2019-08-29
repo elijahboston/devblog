@@ -18,15 +18,7 @@ const SiteTitleLink = styled(props => <Link activeClassName='active' { ...props 
     font-size: 2rem;
     z-index: 999;
 
-    background: ${props => props.theme.linkGradient};
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
     padding: 1.45rem 1.0875rem 1.45rem;
-
-    &:hover {
-        filter: brightness(1.5);
-    }
 `
 //text-shadow: 1px 1px 0px #DB63DB, -1px -1px 0px #0BEFFF;
 const Nav = styled.nav`

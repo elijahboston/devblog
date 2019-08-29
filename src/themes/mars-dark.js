@@ -9,14 +9,16 @@ const palette = {
     yellow:         '#b58900',
     orange:         '#cb4b16',
     red:            '#dc322f',
+    green:          '#5fdc2f',
     lightRed:       '#e67d7b',
+    blue:           '#16669d',
+    lightBlue:      '#00c3fd',
 };
 
 export default {
     linkColor:          palette.white,
-    linkGradient:       'linear-gradient(135deg, rgba(61,177,255,1) 0%, rgba(56,255,119,1) 100%)',
-    linkHoverColor:     palette.red,
-    activeLinkColor:    palette.red,
+    linkHoverColor:     palette.lightBlue,
+    activeLinkColor:    palette.lightBlue,
     bgColor:            palette.darkGray,
     bgColorRGB:         palette.darkGreyRGB,
     bgColor2:           palette.darkerGray,
@@ -25,6 +27,6 @@ export default {
     headerColor:        palette.white,
     tagColor:           palette.lightestGray,
     tagBgColor:         palette.darkerGray,
-    headerFont:         '"Comfortaa", sans-serif',
+    headerFont:         '"Open Sans", sans-serif',
     primaryFont:         '"Open Sans", sans-serif',
 }

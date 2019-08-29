@@ -50,13 +50,12 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h1, h2, h3, h4 {
+    font-weight: 300;
     font-family: ${props => props.theme.headerFont || 'sans-serif'};
   }
 
   a.active {
-    background: ${props => props.theme.linkGradient};
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: ${props => props.theme.linkHoverColor};
   }
 `
 

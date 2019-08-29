@@ -13,8 +13,6 @@ const palette = {
 
 export default {
     linkColor:          palette.blue,
-    linkGradient:       'linear-gradient(135deg, rgba(5,153,252,1) 0%, rgba(42,32,196,1) 100%)',
-    linkGradientActive: 'rgba(0,28,99,1)',
     linkHoverColor:     palette.cyan,
     activeLinkColor:    palette.blue,
     bgColor:            palette.white,
@@ -25,7 +23,6 @@ export default {
     headerColor:        palette.black,
     tagColor:           palette.lightestGray,
     tagBgColor:         palette.darkerGray,
-    siteTitleTextShadow: false,
     headerFont:         '"Comfortaa", sans-serif',
     primaryFont:         '"Open Sans", sans-serif',
 }

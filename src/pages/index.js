@@ -28,7 +28,7 @@ const IndexPage = (
     .map(node => {
       let filename = '';
       if (node.files.length) {
-        const file = node.files.shift();
+        const file = node.files[0];
         filename = file.name;
       }
 

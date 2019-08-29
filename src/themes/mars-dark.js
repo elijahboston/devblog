@@ -14,6 +14,7 @@ const palette = {
 
 export default {
     linkColor:          palette.white,
+    linkGradient:       'linear-gradient(135deg, rgba(61,177,255,1) 0%, rgba(56,255,119,1) 100%)',
     linkHoverColor:     palette.red,
     activeLinkColor:    palette.red,
     bgColor:            palette.darkGray,
@@ -24,4 +25,6 @@ export default {
     headerColor:        palette.white,
     tagColor:           palette.lightestGray,
     tagBgColor:         palette.darkerGray,
+    headerFont:         '"Comfortaa", sans-serif',
+    primaryFont:         '"Open Sans", sans-serif',
 }

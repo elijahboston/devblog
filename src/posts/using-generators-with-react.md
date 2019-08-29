@@ -1,5 +1,5 @@
 ---
-path: "/using-generators-with-react"
+path: "/posts/using-generators-with-react"
 date: "2019-08-27"
 title: "Using Generators with React"
 summary: "Learn how generators can simplify situations where you need to get data in 'chunks'."

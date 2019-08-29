@@ -2,9 +2,10 @@ import React from "react"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
 import Header from "./header"
+import Footer from "./footer"
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
-import theme from "../themes/mars-light"
+import theme from "../themes/mars-dark"
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -18,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   a {
-    color: ${props => props.theme.linkColor};
+    transition: filter .5s ease;
   }
 
   a:visited {
@@ -33,9 +34,6 @@ const GlobalStyle = createGlobalStyle`
     color: ${props => props.theme.headerColor};
   }
 
-  .normal-header {
-  }
-
   .sticky-header {
     position: fixed;
     width: 100%;
@@ -45,6 +43,19 @@ const GlobalStyle = createGlobalStyle`
 
   .sticky-header-active {
     margin-top: 100px;
+  }
+
+  html, body, p {
+    font-family: ${props => props.theme.primaryFont || 'sans-serif'};
+  }
+
+  h1, h2, h3, h4 {
+    font-weight: 300;
+    font-family: ${props => props.theme.headerFont || 'sans-serif'};
+  }
+
+  a.active {
+    color: ${props => props.theme.linkHoverColor};
   }
 `
 
@@ -65,9 +76,7 @@ const PageBody = styled.div`
   }
 `
 
-const Footer = styled.footer`
-  font-size: .7rem;
-`;
+
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -101,11 +110,7 @@ const Layout = ({ children }) => {
           <Header title={title} nav={nav}/>
           <PageBody>
             <main>{children}</main>
-            <Footer>
-              © {new Date().getFullYear()} Elijah Boston. Built with
-              {` `}
-              <a href="https://www.gatsbyjs.org">Gatsby</a>.
-            </Footer>
+            <Footer />
           </PageBody>
         </LayoutWrapper>
       </React.Fragment>

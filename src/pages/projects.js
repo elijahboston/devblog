@@ -8,7 +8,7 @@ const projects = [
     name: 'Mobile App Testing Widget',
     date: 'August 2019',
     clientName: 'CMG',
-    tech: ['React', 'Babel', 'Axios', 'S3', 'Jenkins', 'nopkg'],
+    tech: ['React', 'Babel', 'Axios', 'S3', 'Jenkins'],
     description: `
       Our QA analysts needed a way to quickly test new builds. Our existing process required several manual steps that made this task tedious, time consuming, and prone to human error.
       Using React, S3, and some custom scripting, I was able to develop a "widget" that could be added to Jenkins that eliminated the need for any manual process except configuring the test.
@@ -56,7 +56,7 @@ const TechList = styled.ul`
 
 const TechItem = styled.li`
   display: inline-block;
-  margin: 0 .2rem;
+  margin: .2rem .2rem 0 0;
   list-style-type: none;
   background: ${props => props.theme.tagBgColor};
   color: ${props => props.theme.tagColor};

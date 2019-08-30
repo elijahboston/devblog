@@ -42,6 +42,7 @@ const IndexPage = (
   return (
     <Layout>
       <SEO title="Homepage" />
+      <p>Hi, I'm Elijah Boston, Computer Engineer and full-stack developer.</p>
       <h1>Posts</h1>
       {posts}
       <h1>Github Snippets</h1>

@@ -1,6 +1,7 @@
 require("./src/css/prism-atom-dark.css")
 require("./src/css/reset.css")
 require("./src/css/typography.css")
+require("./src/css/animate.css")
 
 exports.onInitialClientRender = () => {
     window.onscroll = () => {

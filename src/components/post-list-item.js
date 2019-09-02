@@ -17,7 +17,7 @@ const PostDate = styled.time`
 
 const PostSummary = styled.summary``;
 
-const PostListItem = ({ id, post }) => (
+const PostListItem = ({ post }) => (
     <PostContainer>
         <PostHeader>
             <PostLink to={post.frontmatter.path}>
@@ -26,7 +26,7 @@ const PostListItem = ({ id, post }) => (
         </PostHeader>
         <PostDate>{post.frontmatter.date}</PostDate>
         <PostSummary>
-            {post.frontmatter.summary}
+            {post.excerpt}
         </PostSummary>
     </PostContainer>
 );

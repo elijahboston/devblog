@@ -1,8 +1,7 @@
 ---
 path: "/posts/deploying-selenium-grid-on-aws-ecs-with-fargate"
-date: "2019-05-04"
+date: "2019-09-01"
 title: "Deploying Selenium Grid on AWS ECS and Fargate"
-summary: "If you've used Docker, ECS is a breeze."
 ---
 
 Selenium's Docker images make it really easy to setup a nice swarm of browser instances to run your tests against (in parallel even!). Paired with ECS, it's possible to have a cluster up in a few minutes.
@@ -12,11 +11,35 @@ If you're not familiar with ECS, it's basically Amazon's answer to Google's Kube
 ## Setup (Optional)
 Before we get started we'll need to setup some permissions and roles to allow our cluster's containers to do their thing.
 
-
+Open the IAM Role dashboard, and create two roles: one for the ECS service, and one for ECS tasks. Make sure to add the "AmazonECSTaskExecutionRolePolicy" permission to the task role.
 
 ## Create an ECS cluster
 ```bash
 aws ecs create-cluster --cluster-name selenium-grid
+```
+
+You should see some output like:
+
+```
+{
+    "cluster": {
+        "clusterArn": "arn:aws:ecs:us-east-1:438384420157:cluster/selenium-grid",
+        "clusterName": "selenium-grid",
+        "status": "ACTIVE",
+        "registeredContainerInstancesCount": 0,
+        "runningTasksCount": 0,
+        "pendingTasksCount": 0,
+        "activeServicesCount": 0,
+        "statistics": [],
+        "tags": [],
+        "settings": [
+            {
+                "name": "containerInsights",
+                "value": "disabled"
+            }
+        ]
+    }
+}
 ```
 
 ## Create tasks
@@ -28,7 +51,7 @@ Create a json file for the hub task definition:
 
 ```javascript
 {
-    "family": "selenium-grid", 
+    "family": "selenium-grid-hub", 
     "networkMode": "awsvpc",
     "taskRoleArn": "<TASK ROLE ARN>",
     "executionRoleArn": "<EXECUTION ROLE ARN>",
@@ -56,17 +79,29 @@ Create a json file for the hub task definition:
 }
 ```
 
+Before creating the task definition, we'll need to create a storage volume for them to use.
+
+```bash
+aws ec2 create-volume \
+    --volume-type gp2 \
+    --size 40 \
+    --availability-zone us-east-1a
+```
+
+Copy the Volume ID and save it for the next step.
+
 Create the task definition, referencing the file we just created:
 
 ```bash
-aws ecs create-task-set --service selenium-hub --cluster selenium-grid --cli-input-json ./hub.json
+aws ecs register-task-definition \
+    --cli-input-json file://./hub-task.json
 ```
 
 ### Worker Task (Chrome)
 
 ```javascript
 {
-    "family": "selenium-grid", 
+    "family": "selenium-grid-worker-chrome", 
     "networkMode": "awsvpc",
     "taskRoleArn": "<TASK ROLE ARN>",
     "executionRoleArn": "<EXECUTION ROLE ARN>",
@@ -100,7 +135,13 @@ aws ecs create-task-set --service selenium-hub --cluster selenium-grid --cli-inp
         {
           "readOnly": null,
           "containerPath": "/dev/shm",
-          "sourceVolume": "selenium-hub-vol"
+          "sourceVolume": "worker_chrome_scratch"
+        }
+    ],
+    "volumes": [
+        {
+          "name": "worker_chrome_scratch",
+          "host": {}
         }
     ],
     "requiresCompatibilities": [
@@ -108,12 +149,12 @@ aws ecs create-task-set --service selenium-hub --cluster selenium-grid --cli-inp
     ], 
     "cpu": "2048", 
     "memory": "4096",
-    "memoryReservation": "800"
 }
 ```
 Create the task definition, referencing the file we just created:
 
 ```bash
-aws ecs create-task-set --service selenium-hub --cluster selenium-grid --cli-input-json ./worker-chrome.json
+aws ecs register-task-definition \
+    --cli-input-json file://./worker-chrome-task.json
 ```
 

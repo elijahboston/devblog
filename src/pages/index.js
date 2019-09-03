@@ -1,9 +1,15 @@
 import React from "react"
 import { graphql } from "gatsby"
+import styled from "styled-components"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import PostListItem from '../components/post-list-item';
 import ExternalLink from '../components/external-link';
+
+const TagLine = styled.p`
+  font-size: 1.5rem;
+  line-height: 2rem;
+`
 
 const IndexPage = (
   {
@@ -42,7 +48,7 @@ const IndexPage = (
   return (
     <Layout>
       <SEO title="Homepage" />
-      <p>Hi, I'm Elijah Boston, Computer Engineer and full-stack developer.</p>
+      <TagLine>Computer Engineer, full-stack developer. Automater of processes. Huge fan of Capybaras.</TagLine>
       <h1>Posts</h1>
       {posts}
       <h1>Github Snippets</h1>

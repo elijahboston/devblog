@@ -17,6 +17,16 @@ module.exports = {
       {
         label: 'Projects',
         value: 'projects'
+      },
+      {
+        label: 'Github',
+        value: 'http://www.github.com/elijahboston',
+        external: true
+      },
+      {
+        label: 'LinkedIn',
+        value: 'http://www.github.com/elijahboston',
+        external: true
       }
     ]
   },

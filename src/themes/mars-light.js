@@ -23,6 +23,8 @@ export default {
     headerColor:        palette.black,
     tagColor:           palette.lightestGray,
     tagBgColor:         palette.darkerGray,
-    headerFont:         '"Comfortaa", sans-serif',
+    navMenuBgColor:     palette.black,
+    navMenuLinkColor:   palette.white,
+    headerFont:         '"Open Sans", sans-serif',
     primaryFont:         '"Open Sans", sans-serif',
 }

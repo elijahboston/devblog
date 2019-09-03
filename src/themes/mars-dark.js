@@ -1,9 +1,9 @@
 const palette = {
     white:          '#ffffff',
     lightestGray:   '#cecccc',
-    darkGray:       '#313131',
+    darkGray:       '#1d1d1d',
     darkGreyRGB:    '49,49,49',
-    darkerGray:     '#272727',
+    darkerGray:     '#0e0e0e',
     darkerGreyRGB:  '39,39,39',
     base02:         '#073642',
     yellow:         '#b58900',
@@ -27,6 +27,8 @@ export default {
     headerColor:        palette.white,
     tagColor:           palette.lightestGray,
     tagBgColor:         palette.darkerGray,
+    navMenuBgColor:     palette.white,
+    navMenuLinkColor:   palette.black,
     headerFont:         '"Open Sans", sans-serif',
     primaryFont:         '"Open Sans", sans-serif',
 }

@@ -1,6 +1,5 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Link } from "gatsby"
 import Header from "./header"
 import Footer from "./footer"
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components"
@@ -88,6 +87,7 @@ const Layout = ({ children }) => {
           nav {
             value
             label
+            external
           }
         }
       }

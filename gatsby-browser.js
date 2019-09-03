@@ -3,6 +3,7 @@ require("./src/css/reset.css")
 require("./src/css/typography.css")
 
 exports.onInitialClientRender = () => {
+    
     window.onscroll = () => {
         // minimum scroll amount to apply the sticky header
         const threshold = 1;
@@ -21,4 +22,5 @@ exports.onInitialClientRender = () => {
             mainEl.classList.remove('sticky-header-active');
         }
     }
+    
 }

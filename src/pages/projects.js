@@ -43,8 +43,13 @@ const Description = styled.p``;
 
 const Details = styled.div`
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   margin-bottom: 1.45rem;
+
+  background: ${props => props.theme.tagBgColor};
+  border-radius: .3rem;
+  font-size: .9rem;
+  padding: .4rem;
 `
 
 const TechList = styled.ul`
@@ -69,15 +74,23 @@ const TechItem = styled.li`
   }
 `
 
-const DetailSubtitle = styled.div`
-  display: inline-block;
-  margin-right: .5rem;
-  width: 75px;
-  font-weight: bold;
-`;
-
-const ProjectItem = ({name, url, date, clientName, description, tech }) => <Item>
+const ProjectItem = ({name, url, date, clientName, description, tech, video }) => <Item>
     <Title>{name}</Title>
+    <Details>
+      <span className='project-time'>
+        <time>{date}</time>
+      </span>
+
+      <span className='project-url'>
+        {url && <a href={url}>{url}</a>}
+        {!url && 'Internal Project'}
+      </span>
+
+      {clientName &&
+        <span className='client-name'>
+          {clientName}
+        </span>}
+    </Details>
     <TechList>
           {tech.map(name => <TechItem key={name}>
             {name}
@@ -86,24 +99,6 @@ const ProjectItem = ({name, url, date, clientName, description, tech }) => <Item
     <Description>
       {description}
     </Description>
-    <Details>
-      <span className='project-url'>
-        <DetailSubtitle>URL:</DetailSubtitle>
-        {url && <a href={url}>{url}</a>}
-        {!url && 'Internal Project'}
-      </span>
-
-      {clientName &&
-        <span className='client-name'>
-          <DetailSubtitle>Client:</DetailSubtitle>
-          {clientName}
-        </span>}
-
-      <span className='project-time'>
-        <DetailSubtitle>Dates:</DetailSubtitle>
-        <time>{date}</time>
-      </span>
-    </Details>
 </Item>
 
 const ProjectsPage = () => (

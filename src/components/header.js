@@ -38,8 +38,9 @@ const HeaderWrap = styled.div`
     width: 70%;
     max-width: 960px;
     align-items: center;
-    height: 4rem;
+    height: 6rem;
     padding: 0 0 0 1.0875rem;
+
     @media only screen and (max-width: 900px) {
         width: 100%;
     }

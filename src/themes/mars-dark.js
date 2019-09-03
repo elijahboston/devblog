@@ -1,5 +1,6 @@
 const palette = {
     white:          '#ffffff',
+    black:          '#000000',
     lightestGray:   '#cecccc',
     darkGray:       '#1d1d1d',
     darkGreyRGB:    '49,49,49',

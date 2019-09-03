@@ -28,12 +28,15 @@ const IconLink = styled.a`
     &:first {
         margin-right: 1rem;
     }
+
+    &:hover svg {
+        fill: ${props => props.theme.linkHoverColor};
+    }
 `
 
 const Footer = () => {
     return (
         <FooterStyle>
-
             <CopyrightNotice>
                 © {new Date().getFullYear()} Elijah Boston. Built with <a href="https://www.gatsbyjs.org">Gatsby</a>.
             </CopyrightNotice>
@@ -41,7 +44,7 @@ const Footer = () => {
                 <IconLink href="http://www.github.com/elijahboston">
                     <GithubIcon/>
                 </IconLink>
-                <IconLink>
+                <IconLink href="http://www.linkedin.com/in/elijah-boston-3725582b">
                     <LinkedInIcon/>
                 </IconLink>
             </ExternalSites>

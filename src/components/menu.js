@@ -1,7 +1,7 @@
 import React, { useRef, useState, useContext } from "react"
 import { Link, navigate } from "gatsby"
 import styled, { ThemeContext } from "styled-components"
-
+import { GithubIcon, LinkedInIcon } from './svg-icons'
 import { useTransition, config, animated, useChain } from 'react-spring'
 
 // Displays links to pages within site, and external links
@@ -22,10 +22,6 @@ const Nav = styled(animated.nav)`
     position: absolute;
     border-radius: 1rem;
     box-shadow: black 2px 2px 0, rgba(0,0,0,.5) 0 0 2px;
-
-    a:visited {
-        color: ${props => props.theme.navMenuLinkColor};
-    }
 `
 
 // Common styling for links in menu
@@ -40,16 +36,21 @@ const navLinkCommon = `
     padding: 1rem 2rem;
     text-align: right;
     width: 100%;
+
+    svg {
+        width: 1.5rem;
+        height: 1.5rem;
+        position: absolute;
+        left: 3rem;
+    }
 `
 // Used inside of Nav
 const NavLink = styled(props => <Link partiallyActive={true} activeClassName='active' { ...props } />)`
-    color: ${props => props.theme.navMenuLinkColor};
     ${navLinkCommon}
 `
 
 // Link to external URL
 const ExternalNavLink = styled.a`
-    color: ${props => props.theme.navMenuLinkColor};
     ${navLinkCommon}
 `
 
@@ -143,15 +144,17 @@ const ResponsiveNav = ({ nav, isOpen, handleClick, ref }) => {
         from: {
             opacity: 0,
             transform: 'scale(0)',
+            color: 'red'
         },
         enter: {
             opacity: 1,
             transform: 'scale(1)',
             background: themeContext.navMenuBgColor,
+            color: 'green'
         },
         leave: {
             opacity: 0,
-            transform: 'scale(0)'
+            transform: 'scale(0)',
         }
     })
 
@@ -159,9 +162,9 @@ const ResponsiveNav = ({ nav, isOpen, handleClick, ref }) => {
         transition.map(({ item, key, props }) =>
             item && <Nav style={props}>
                 {nav.map(item => {
-                    console.debug(item);
                     if (item.external) {
-                        return <ExternalNavLink key={item.label} href={item.value}>{item.label}</ExternalNavLink>;
+                        const icon = item.label === 'Github' ? <GithubIcon fill={themeContext.navMenuLinkColor}/> : <LinkedInIcon fill={themeContext.navMenuLinkColor} />;
+                        return <ExternalNavLink key={item.label} href={item.value}>{icon} {item.label}</ExternalNavLink>;
                     } else {
                         return <NavLink key={item.label} to={item.value} onClick={handleClick}>{item.label}</NavLink>;
                     }

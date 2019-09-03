@@ -25,10 +25,6 @@ const IconLink = styled.a`
         fill: ${props => props.theme.linkColor};
     }
 
-    &:first {
-        margin-right: 1rem;
-    }
-
     &:hover svg {
         fill: ${props => props.theme.linkHoverColor};
     }
@@ -41,7 +37,7 @@ const Footer = () => {
                 © {new Date().getFullYear()} Elijah Boston. Built with <a href="https://www.gatsbyjs.org">Gatsby</a>.
             </CopyrightNotice>
             <ExternalSites>
-                <IconLink href="http://www.github.com/elijahboston">
+                <IconLink href="http://www.github.com/elijahboston" style={{ marginRight: "1rem" }}>
                     <GithubIcon/>
                 </IconLink>
                 <IconLink href="http://www.linkedin.com/in/elijah-boston-3725582b">

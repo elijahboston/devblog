@@ -14,14 +14,15 @@ const Nav = styled(animated.nav)`
     align-self: flex-end;
 
     width: 100%;
-    top: 1.5rem;
+    top: 2.5rem;
     right: 1rem;
     padding: 3rem 0 0 0;
     width: 14rem;
     transform-origin: top right;
     position: absolute;
     border-radius: 1rem;
-    box-shadow: black 2px 2px 0, rgba(0,0,0,.5) 0 0 2px;
+
+    transition: top .5s;
 `
 
 // Common styling for links in menu
@@ -73,10 +74,12 @@ const MenuToggleButton = styled.button`
 
     display: block;
     position: absolute;
-    top: 1.5rem;
+    top: 2.5rem;
     right: 1rem;
     width: 2.5rem;
     height: 2.5rem;
+
+    transition: top .5s;
 
     color:${props => props.theme.linkColor};
 

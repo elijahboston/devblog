@@ -3,23 +3,19 @@ require("./src/css/reset.css")
 require("./src/css/typography.css")
 
 exports.onInitialClientRender = () => {
-    
     window.onscroll = () => {
         // minimum scroll amount to apply the sticky header
         const threshold = 1;
         const headerEl = document.querySelector('header');
-        const mainEl = document.querySelector('main');
 
         // apply sticky header style if not already applied
         if (!headerEl.classList.contains('sticky-header') && window.scrollY > threshold) {
             headerEl.classList.add('sticky-header');
-            mainEl.classList.add('sticky-header-active');
         }
     
         // remove sticky header style if not already removed
         if (headerEl.classList.contains('sticky-header') && window.scrollY <= threshold) {
             headerEl.classList.remove('sticky-header');
-            mainEl.classList.remove('sticky-header-active');
         }
     }
     

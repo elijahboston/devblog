@@ -14,7 +14,7 @@ const Nav = styled(animated.nav)`
     align-self: flex-end;
 
     width: 100%;
-    top: .8rem;
+    top: 1.5rem;
     right: 1rem;
     padding: 3rem 0 0 0;
     width: 14rem;
@@ -73,21 +73,12 @@ const MenuToggleButton = styled.button`
 
     display: block;
     position: absolute;
-    top: .8rem;
+    top: 1.5rem;
     right: 1rem;
     width: 2.5rem;
     height: 2.5rem;
-    
-    color:${props => props.theme.linkColor};
 
-    @media only screen and (max-width: 900px) {
-        display: block;
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        width: 2.5rem;
-        height: 2.5rem;
-    }
+    color:${props => props.theme.linkColor};
 
     .material-icons {
         -webkit-text-fill-color: transparent;

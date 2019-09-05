@@ -6,7 +6,22 @@ import styled, { ThemeProvider, createGlobalStyle } from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
 import theme from "../themes/mars-dark"
 
+// Increase base font size to scale things up
+// for high dpi displays
+const retinaStyle = `
+  @media
+  (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi) {
+      html {
+        font-size: 24px;
+      }
+  }
+`
+
 const GlobalStyle = createGlobalStyle`
+
+  ${retinaStyle}
+
   body {
     background-color: ${props => props.theme.bgColor};
     color: ${props => props.theme.textColor};
@@ -19,7 +34,11 @@ const GlobalStyle = createGlobalStyle`
 
   a {
     color: ${props => props.theme.linkColor};
-    transition: filter .5s ease;
+    transition: filter .5s, color .5s;
+  }
+
+  a svg {
+    transition: fill .5s;
   }
 
   a:visited {
@@ -50,15 +69,31 @@ const GlobalStyle = createGlobalStyle`
     color: ${props => props.theme.headerColor};
   }
 
-  .sticky-header {
+  header.sticky-header {
     position: fixed;
     width: 100%;
     top: 0;
-    background-color: rgba(${props => props.theme.bgColor2RGB}, .8);
+    background-color: ${props => props.theme.headerBgColor};
+  }
+
+  header.sticky-header div[class^="header__HeaderWrap"] {
+    height: 4rem;
+  }
+
+  header.sticky-header button[class^="menu__MenuToggleButton"] {
+    top: .65rem;
+  }
+
+  header.sticky-header a[class^="header__SiteTitleLink"] {
+    text-shadow: ${props => props.theme.siteTitleShadow};
+  }
+
+  header.sticky-header nav {
+    top: .65rem;
   }
 
   .sticky-header-active {
-    margin-top: 100px;
+    margin-top: 10rem;
   }
 
   html, body, p {
@@ -92,7 +127,9 @@ const PageBody = styled.div`
   }
 `
 
-
+const Main = styled.main`
+  margin-top: 8rem;
+`
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -126,7 +163,7 @@ const Layout = ({ children }) => {
         <LayoutWrapper>
           <Header title={title} nav={nav}/>
           <PageBody>
-            <main>{children}</main>
+            <Main>{children}</Main>
             <Footer />
           </PageBody>
         </LayoutWrapper>

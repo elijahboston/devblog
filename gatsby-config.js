@@ -25,7 +25,7 @@ module.exports = {
       },
       {
         label: 'LinkedIn',
-        value: 'http://www.github.com/elijahboston',
+        value: 'https://www.linkedin.com/in/elijah-boston-3725582b/',
         external: true
       }
     ]

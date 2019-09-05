@@ -30,6 +30,7 @@ export default {
     tagBgColor:         palette.darkerGray,
     navMenuBgColor:     palette.white,
     navMenuLinkColor:   palette.black,
+    siteTitleShadow:    '1px 2px 5px #a2a2a2',
     headerFont:         '"Open Sans", sans-serif',
     primaryFont:         '"Open Sans", sans-serif',
 }

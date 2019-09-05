@@ -84,6 +84,10 @@ const GlobalStyle = createGlobalStyle`
     top: .65rem;
   }
 
+  header.sticky-header a[class^="header__SiteTitleLink"] {
+    text-shadow: ${props => props.theme.siteTitleShadow};
+  }
+
   header.sticky-header nav {
     top: .65rem;
   }

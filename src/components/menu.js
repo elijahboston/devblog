@@ -138,13 +138,11 @@ const ResponsiveNav = ({ nav, isOpen, handleClick, ref }) => {
         from: {
             opacity: 0,
             transform: 'scale(0)',
-            color: 'red'
         },
         enter: {
             opacity: 1,
             transform: 'scale(1)',
             background: themeContext.navMenuBgColor,
-            color: 'green'
         },
         leave: {
             opacity: 0,

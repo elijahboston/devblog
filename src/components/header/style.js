@@ -11,7 +11,6 @@ export const HeaderStyle = styled.header`
     justify-content: center;
 
     transition: background-color .5s;
-    backdrop-filter: blur(2px);
 `
 
 
@@ -30,5 +29,10 @@ export const HeaderWrap = styled.div`
 
     @media only screen and (max-width: 900px) {
         width: 100%;
+    }
+
+    @media
+    (-webkit-max-device-pixel-ratio: 1) {
+        height: 4rem;
     }
 `

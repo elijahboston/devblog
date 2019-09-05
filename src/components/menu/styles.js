@@ -22,6 +22,11 @@ export const Nav = styled(animated.nav)`
     border-radius: 1rem;
 
     transition: top .5s;
+
+    @media
+    (-webkit-max-device-pixel-ratio: 1) {
+        top: .6rem;
+    }
 `
 
 // Common styling for links in menu
@@ -92,5 +97,10 @@ export const MenuToggleButton = styled.button`
         top: 0;
         right: 0;
         position: absolute;
+    }
+
+    @media
+    (-webkit-max-device-pixel-ratio: 1) {
+        top: .6rem;
     }
 `

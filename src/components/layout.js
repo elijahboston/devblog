@@ -13,7 +13,7 @@ const retinaStyle = `
   (-webkit-min-device-pixel-ratio: 2),
   (min-resolution: 192dpi) {
       html {
-        font-size: 24px;
+        font-size: 16px;
       }
   }
 `

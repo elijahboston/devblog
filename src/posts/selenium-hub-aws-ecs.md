@@ -1,6 +1,6 @@
 ---
 path: "/posts/deploying-selenium-grid-on-aws-fargate"
-date: "2019-09-01"
+date: "2019-09-23"
 title: "Deploying Selenium Grid on AWS Fargate"
 ---
 
@@ -11,7 +11,6 @@ Seleum Grid is great and it's a breeze to get it started up locally, where thing
 * [Setup](#setup)
 * [Registering Tasks](#registering-tasks)
 * [Create Services](#create-services)
-
 
 ## Why Fargate?
 There are a few ways to get this setup on AWS, my initial attempt was to simply setup a small cluster of EC2 nodes, and deploy the compose file that [Selenium provides](https://github.com/SeleniumHQ/docker-selenium/wiki/Getting-Started-with-Docker-Compose)

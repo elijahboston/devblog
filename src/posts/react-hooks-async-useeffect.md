@@ -2,7 +2,6 @@
 path: "/posts/react-hooks-async-useeffect"
 date: "2019-08-27"
 title: "Async Functions with useEffect"
-summary: "Fetching data using useEffect can be a little weird compared to using React's component class methods. In this post we talk about useEffect and show how to use it to perform asynchornous operations within your components."
 ---
 useEffect replaces `componentDidMount` and `componentWillUpdate` to handle any sort of events that occur *after* the component is mounted. At first I was confused a little by this, because the signature of useEffect is:
 ```javascript

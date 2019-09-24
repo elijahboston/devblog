@@ -1,8 +1,6 @@
 import React from "react"
-import { graphql } from 'gatsby'
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import PostListItem from '../components/post-list-item';
+import { graphql } from "gatsby"
+import { Layout, SEO, PostListItem } from "../components"
 
 const PostsPage = (
   {
@@ -36,7 +34,6 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             path
             title
-            summary
           }
         }
       }

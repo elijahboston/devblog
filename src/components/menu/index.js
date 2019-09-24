@@ -3,9 +3,9 @@ import { navigate } from "gatsby"
 import { ThemeContext } from "styled-components"
 import { GithubIcon, LinkedInIcon } from "../svg-icons"
 import { useTransition, config, animated, useChain } from "react-spring"
-import { Nav, NavLink, ExternalNavLink, ToggleButtonWrap, MenuToggleButton } from "./styles"
+import { Nav, NavLink, ExternalNavLink, ToggleButtonWrap, MenuToggleButton, MenuContainer, AlignMenu } from "./styles"
 
-const MenuToggle = ({ isOpen, handleClick, ref }) => {
+const MenuToggle = ({ isOpen, handleClick, handleMouseEnter, handleMouseLeave, ref }) => {
     const iconTransitions = useTransition(isOpen, null, {
             ref,
             from: {
@@ -26,7 +26,7 @@ const MenuToggle = ({ isOpen, handleClick, ref }) => {
         })
 
     return (
-        <MenuToggleButton onClick={handleClick}>
+        <MenuToggleButton onClick={handleClick} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             {iconTransitions.map(({ item, key, props }) => item
             ? <animated.i style={props} className="material-icons">
                     close
@@ -38,7 +38,7 @@ const MenuToggle = ({ isOpen, handleClick, ref }) => {
     )
 }
 
-const ResponsiveNav = ({ nav, isOpen, handleClick, ref }) => {
+const ResponsiveNav = ({ nav, isOpen, handleClick, handleMouseLeave, ref }) => {
     const themeContext = useContext(ThemeContext);
 
     const transition = useTransition(isOpen, null, {
@@ -61,7 +61,7 @@ const ResponsiveNav = ({ nav, isOpen, handleClick, ref }) => {
 
     return (
         transition.map(({ item, key, props }) =>
-            item && <Nav style={props}>
+            item && <Nav style={props} onMouseLeave={handleMouseLeave}>
                 {nav.map(item => {
                     if (item.external) {
                         const icon = item.label === 'Github' ? <GithubIcon fill={themeContext.navMenuLinkColor}/> : <LinkedInIcon fill={themeContext.navMenuLinkColor} />;
@@ -79,10 +79,11 @@ const Menu = ({ nav }) => {
     const menuRef = useRef();
     const toggleRef = useRef();
 
-    const toggleMenu = () => {
-        console.debug('Handled click!');
-        set(!open);
-    };
+    const toggleMenu = () => set(!open);
+
+    const handleMouseEnter = () => set(true);
+
+    const handleMouseLeave = () => set(false);
 
     const navToPage = (e) => {
         const a = document.createElement('a');
@@ -96,10 +97,17 @@ const Menu = ({ nav }) => {
     useChain(open ? [toggleRef, menuRef] : [menuRef, toggleRef], [0, open ? 0.1 : 0.6])
 
     return (
-        <ToggleButtonWrap>
-            <ResponsiveNav nav={nav} isOpen={open} ref={menuRef} handleClick={navToPage} />
-            <MenuToggle isOpen={open} handleClick={toggleMenu} ref={toggleRef} />
-        </ToggleButtonWrap>
+        <MenuContainer>
+            <AlignMenu>
+                <ToggleButtonWrap>
+                    <ResponsiveNav nav={nav} isOpen={open} ref={menuRef} handleClick={navToPage} handleMouseLeave={handleMouseLeave}/>
+                    <MenuToggle isOpen={open}
+                        handleClick={toggleMenu}
+                        ref={toggleRef}
+                        handleMouseEnter={handleMouseEnter}/>
+                </ToggleButtonWrap>
+            </AlignMenu>
+        </MenuContainer>
     )
 }
 

@@ -12,6 +12,7 @@ Seleum Grid is great and it's a breeze to get it started up locally, where thing
 * [Registering Tasks](#registering-tasks)
 * [Create Services](#create-services)
 * [Wrapping Up](#wrapping-up)
+* [Further Topics](#further-topics)
 
 <a id="why-fargate"></a>
 ## Why Fargate?
@@ -318,3 +319,10 @@ Using the IP of the hub, if we go to http://<HUB IP>:4444/grid/console we should
 ![Grid Console](../images/posts/Grid_Console.png)
 
 Congragulations, you now have a scalable Selenium Grid!
+
+## Further Topics
+There's a lot you can do at this point depending on your needs.
+
+*Scaling* a Selenium Grid cluster is a whole topic of its own. The complexity arises from the nature of the workload. A browser instance's CPU and RAM might spike a little when it's loading a page, but will drop quickly afterwards. This is much different than a server application that might gradually consume more resources as it handles more connection.
+
+What this means is we can't really use Amazon's Auto-Scaling features, because CPU/RAM metrics won't really tell us when we need to scale up/down.

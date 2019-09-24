@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Header, Footer } from "./index"
+import { Header, Footer, Menu } from "./index"
 import { useStaticQuery, graphql } from "gatsby"
 import { ThemeProvider } from "styled-components"
 import { GlobalStyle, LayoutWrapper, PageBody, Main } from "./layout/styles"
@@ -38,6 +38,7 @@ const Layout = ({ children }) => {
         <GlobalStyle />
         <LayoutWrapper>
           <Header title={title} nav={nav}/>
+          <Menu nav={nav}/>
           <PageBody>
             <Main>{children}</Main>
             <Footer />

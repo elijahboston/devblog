@@ -5,7 +5,6 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
-    "babel-plugin-styled-components": "^1.10.6",
     "gatsby": "^2.13.39",
     "gatsby-image": "^2.2.6",
     "gatsby-plugin-canonical-urls": "^2.1.2",
@@ -15,6 +14,7 @@
     "gatsby-plugin-sharp": "^2.2.9",
     "gatsby-plugin-styled-components": "^3.1.2",
     "gatsby-remark-embedder": "^1.1.2",
+    "gatsby-remark-images": "^3.1.23",
     "gatsby-remark-prismjs": "^3.3.6",
     "gatsby-source-filesystem": "^2.1.6",
     "gatsby-source-graphql": "^2.1.5",
@@ -30,6 +30,8 @@
     "tinycolor2": "^1.4.1"
   },
   "devDependencies": {
+    "babel-plugin-styled-components": "^1.10.6",
+    "babel-preset-gatsby": "^0.2.14",
     "prettier": "^1.18.2"
   },
   "keywords": [

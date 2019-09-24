@@ -90,6 +90,10 @@ export const GlobalStyle = createGlobalStyle`
     margin-top: 10rem;
   }
 
+  div.sticky-toggle {
+    position: fixed;
+  }
+
   html, body, p {
     font-family: ${props => props.theme.primaryFont || 'sans-serif'};
   }
@@ -112,7 +116,7 @@ export const LayoutWrapper = styled.div`
 export const PageBody = styled.div`
   margin: 0 auto;
   max-width: 960px;
-  padding: 0px 1.0875rem 1.45rem;
+  padding: 0px 1rem 1.45rem;
   padding-top: 0;
   width: 70%;
 
@@ -121,6 +125,4 @@ export const PageBody = styled.div`
   }
 `
 
-export const Main = styled.main`
-  margin-top: 8rem;
-`
+export const Main = styled.main``

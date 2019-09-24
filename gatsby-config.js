@@ -44,7 +44,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
+        name: `elijah-boston`,
         short_name: `eb`,
         start_url: `/`,
         background_color: `#eee8d5`,
@@ -79,7 +79,16 @@ module.exports = {
                 global: false,
               },
             },
-          }
+          },
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              // It's important to specify the maxWidth (in pixels) of
+              // the content container as this plugin uses this as the
+              // base for generating different widths of each image.
+              maxWidth: 590,
+            },
+          },
         ],
       }
     },
@@ -107,7 +116,7 @@ module.exports = {
       },
     },
     // Styled Components
-    `gatsby-plugin-styled-components`
+    `gatsby-plugin-styled-components`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

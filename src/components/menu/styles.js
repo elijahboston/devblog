@@ -13,20 +13,14 @@ export const Nav = styled(animated.nav)`
     align-self: flex-end;
 
     width: 100%;
-    top: 2.5rem;
-    right: 1rem;
+    top: 0;
+    right: 0;
     padding: 3rem 0 0 0;
     width: 14rem;
     transform-origin: top right;
     position: absolute;
-    border-radius: 1rem;
 
     transition: top .5s;
-
-    @media
-    (-webkit-max-device-pixel-ratio: 1) {
-        top: .6rem;
-    }
 `
 
 // Common styling for links in menu
@@ -59,13 +53,34 @@ export const ExternalNavLink = styled.a`
     ${navLinkCommon}
 `
 
+export const MenuContainer = styled.div`
+    position: fixed;
+    justify-content: center;
+    width: 100%;
+    display: flex;
+    height: 6rem;
+`
+
+export const AlignMenu = styled.div`
+    width: 70%;
+    max-width: 960px;
+    justify-content: flex-end;
+    display: flex;
+
+    @media only screen and (max-width: 900px) {
+        width: 100%;
+    }
+`
+
 // Lets us position the button within the header space
 // without impacting animations
 export const ToggleButtonWrap = styled.div`
     position: relative;
-    align-self: flex-end;
+    align-self: center;
+    margin-right: 1rem;
     width: 4.5rem;
-    height: 100%;
+    height: 4rem;
+    background-color: #fff;
 `
 
 export const MenuToggleButton = styled.button`

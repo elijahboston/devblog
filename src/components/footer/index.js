@@ -1,34 +1,6 @@
 import React from "react"
-import styled from "styled-components"
-import { GithubIcon, LinkedInIcon } from './svg-icons'
-
-const FooterStyle = styled.footer`
-    display: flex;
-    justify-content: space-between;
-    font-size: .7rem;
-`;
-
-const CopyrightNotice = styled.div``
-
-const ExternalSites = styled.div`
-    display: flex;
-    flex-direction: row;
-`
-
-const IconLink = styled.a`
-    display: block;
-    width: 2rem;
-    height: 2rem;
-    color: ${props => props.theme.linkColor};
-
-    svg {
-        fill: ${props => props.theme.linkColor};
-    }
-
-    &:hover svg {
-        fill: ${props => props.theme.linkHoverColor};
-    }
-`
+import { GithubIcon, LinkedInIcon } from '../svg-icons'
+import { FooterStyle, CopyrightNotice, ExternalSites, IconLink } from './styles';
 
 const Footer = () => {
     return (

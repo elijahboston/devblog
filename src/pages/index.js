@@ -1,10 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import PostListItem from '../components/post-list-item';
-import ExternalLink from '../components/external-link';
+import { Layout, SEO, PostListItem, ExternalLink } from "../components"
 
 const TagLine = styled.p`
   font-size: 1.5rem;
@@ -72,7 +69,6 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             path
             title
-            summary
           }
         }
       }

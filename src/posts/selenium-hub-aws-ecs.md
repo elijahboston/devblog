@@ -11,7 +11,9 @@ Seleum Grid is great and it's a breeze to get it started up locally, where thing
 * [Setup](#setup)
 * [Registering Tasks](#registering-tasks)
 * [Create Services](#create-services)
+* [Wrapping Up](#wrapping-up)
 
+<a id="why-fargate"></a>
 ## Why Fargate?
 There are a few ways to get this setup on AWS, my initial attempt was to simply setup a small cluster of EC2 nodes, and deploy the compose file that [Selenium provides](https://github.com/SeleniumHQ/docker-selenium/wiki/Getting-Started-with-Docker-Compose)
 
@@ -24,6 +26,7 @@ Fargate sounded attactive because not only would it handle orchestration, but ma
 - **Task Definitions** can be thought of similar to service definitions in a `docker-compose` file, they define the image, resources, ports, volumes, etc.
 - **Service Definitions** outline you AWS-specific info like security groups, execution roles, and networking. These deploy your task definition to the cluster.
 
+<a id="setup"></a>
 ## Setup
 Before we get started we'll need to setup some permissions and roles to allow our cluster's containers to do their thing.
 
@@ -72,6 +75,7 @@ You should see some output like:
 }
 ```
 
+<a id="registering-tasks"></a>
 ## Registering tasks
 There are actually two ways to define tasks: you can either use the approach I took here and piece together some JSON files for each of your tasks and services, or you can actually use `docker-compose.yml` and the `aws ecs-cli compose` (command)[https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cmd-ecs-cli-compose.html] -- *but* be aware that there's a caveat (it's AWS -- there's *always* a caveat):
 
@@ -212,6 +216,7 @@ Create the task definition, referencing the file we just created:
 aws ecs register-task-definition --cli-input-json file://chrome-task.json
 ```
 
+<a id="create-services"></a>
 ## Create Services
 Services take our task definition and describe how it should be deployed within the cluster. For our purposes we're keeping things simple, so we just need to define a few standard AWS parameters, and set a `desiredCount` telling ECS how many instances of the task should be created for this service.
 
@@ -294,6 +299,7 @@ aws ecs create-service \
     --cli-input-json file://./chrome-service.json
 ```
 
+<a id="wrapping-up"></a>
 ## Wrapping Up
 Now if we log into the AWS ECS dashboard and open up our cluster, we should see two running services:
 

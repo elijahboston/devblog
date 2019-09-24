@@ -59,6 +59,7 @@ export const MenuContainer = styled.div`
     width: 100%;
     display: flex;
     height: 6rem;
+    z-index: 999;
 `
 
 export const AlignMenu = styled.div`
@@ -81,6 +82,11 @@ export const ToggleButtonWrap = styled.div`
     width: 4.5rem;
     height: 4rem;
     background-color: #fff;
+
+    @media only screen and (max-width: 900px) {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
 `
 
 export const MenuToggleButton = styled.button`
@@ -93,7 +99,7 @@ export const MenuToggleButton = styled.button`
 
     display: block;
     position: absolute;
-    top: 2.5rem;
+    top: .6rem;
     right: 1rem;
     width: 2.5rem;
     height: 2.5rem;
@@ -114,8 +120,8 @@ export const MenuToggleButton = styled.button`
         position: absolute;
     }
 
-    @media
-    (-webkit-max-device-pixel-ratio: 1) {
-        top: .6rem;
+    @media only screen and (max-width: 900px) {
+        top: 0;
+        right: 0;
     }
 `

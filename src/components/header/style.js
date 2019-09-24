@@ -27,5 +27,5 @@ export const HeaderWrap = styled.div`
         width: 100%;
     }
 
-
+    z-index: 0;
 `

@@ -8,7 +8,7 @@ export const Nav = styled(animated.nav)`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1.45rem 1.0875rem 1.45rem;
+    padding: 1.45rem 1rem 1.45rem;
     z-index: 999;
     align-self: flex-end;
 
@@ -46,11 +46,27 @@ export const navLinkCommon = `
 // Used inside of Nav
 export const NavLink = styled(props => <Link partiallyActive={true} activeClassName='active' { ...props } />)`
     ${navLinkCommon}
+
+    nav a {
+        color: ${props => props.theme.navMenuLinkColor};
+    }
+    
+    nav a:visited {
+        color: ${props => props.theme.navMenuLinkColor};
+    }
 `
 
 // Link to external URL
 export const ExternalNavLink = styled.a`
     ${navLinkCommon}
+
+    nav a {
+        color: ${props => props.theme.navMenuLinkColor};
+    }
+    
+    nav a:visited {
+        color: ${props => props.theme.navMenuLinkColor};
+    }
 `
 
 export const MenuContainer = styled.div`
@@ -60,6 +76,10 @@ export const MenuContainer = styled.div`
     display: flex;
     height: 6rem;
     z-index: 999;
+
+    @media only screen and (min-width: 900px) {
+        display: none;
+    }
 `
 
 export const AlignMenu = styled.div`
@@ -81,7 +101,6 @@ export const ToggleButtonWrap = styled.div`
     margin-right: 1rem;
     width: 4.5rem;
     height: 4rem;
-    background-color: #fff;
 
     @media only screen and (max-width: 900px) {
         width: 2.5rem;

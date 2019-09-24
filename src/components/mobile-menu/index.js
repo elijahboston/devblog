@@ -5,7 +5,7 @@ import { GithubIcon, LinkedInIcon } from "../svg-icons"
 import { useTransition, config, animated, useChain } from "react-spring"
 import { Nav, NavLink, ExternalNavLink, ToggleButtonWrap, MenuToggleButton, MenuContainer, AlignMenu } from "./styles"
 
-const MenuToggle = ({ isOpen, handleClick, handleMouseEnter, handleMouseLeave, ref }) => {
+const MenuToggle = ({ isOpen, handleClick, ref }) => {
     const iconTransitions = useTransition(isOpen, null, {
             ref,
             from: {
@@ -26,7 +26,7 @@ const MenuToggle = ({ isOpen, handleClick, handleMouseEnter, handleMouseLeave, r
         })
 
     return (
-        <MenuToggleButton onClick={handleClick} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        <MenuToggleButton onClick={handleClick}>
             {iconTransitions.map(({ item, key, props }) => item
             ? <animated.i style={props} className="material-icons">
                     close
@@ -38,7 +38,7 @@ const MenuToggle = ({ isOpen, handleClick, handleMouseEnter, handleMouseLeave, r
     )
 }
 
-const ResponsiveNav = ({ nav, isOpen, handleClick, handleMouseLeave, ref }) => {
+const ResponsiveNav = ({ nav, isOpen, handleClick, ref }) => {
     const themeContext = useContext(ThemeContext);
 
     const transition = useTransition(isOpen, null, {
@@ -61,7 +61,7 @@ const ResponsiveNav = ({ nav, isOpen, handleClick, handleMouseLeave, ref }) => {
 
     return (
         transition.map(({ item, key, props }) =>
-            item && <Nav style={props} onMouseLeave={handleMouseLeave}>
+            item && <Nav style={props}>
                 {nav.map(item => {
                     if (item.external) {
                         const icon = item.label === 'Github' ? <GithubIcon fill={themeContext.navMenuLinkColor}/> : <LinkedInIcon fill={themeContext.navMenuLinkColor} />;
@@ -74,16 +74,16 @@ const ResponsiveNav = ({ nav, isOpen, handleClick, handleMouseLeave, ref }) => {
     )
 }
 
-const Menu = ({ nav }) => {
+const MobileMenu = ({ nav }) => {
     const [open, set] = useState(false);
     const menuRef = useRef();
     const toggleRef = useRef();
 
     const toggleMenu = () => set(!open);
 
-    const handleMouseEnter = () => set(true);
+    //const handleMouseEnter = () => set(true);
 
-    const handleMouseLeave = () => set(false);
+    // const handleMouseLeave = () => set(false);
 
     const navToPage = (e) => {
         const a = document.createElement('a');
@@ -100,15 +100,14 @@ const Menu = ({ nav }) => {
         <MenuContainer>
             <AlignMenu>
                 <ToggleButtonWrap>
-                    <ResponsiveNav nav={nav} isOpen={open} ref={menuRef} handleClick={navToPage} handleMouseLeave={handleMouseLeave}/>
+                    <ResponsiveNav nav={nav} isOpen={open} ref={menuRef} handleClick={navToPage}/>
                     <MenuToggle isOpen={open}
                         handleClick={toggleMenu}
-                        ref={toggleRef}
-                        handleMouseEnter={handleMouseEnter}/>
+                        ref={toggleRef}/>
                 </ToggleButtonWrap>
             </AlignMenu>
         </MenuContainer>
     )
 }
 
-export default Menu;
+export default MobileMenu;

@@ -51,8 +51,21 @@ export const GlobalStyle = createGlobalStyle`
     color: ${props => props.theme.navMenuLinkColor};
   }
 
+  header nav a {
+    color: white;
+  }
+
+  header nav a:visited {
+      color: white;
+  }
+
+  header nav a:hover,
+  header nav a.active {
+    color: ${props => props.theme.linkHoverColor};
+  }
+
   nav a:hover, nav a.active {
-      color: ${props => props.theme.linkHoverColor};
+    color: ${props => props.theme.linkHoverColor};
   }
 
   nav a:hover svg {

@@ -81,19 +81,15 @@ const MobileMenu = ({ nav }) => {
 
     const toggleMenu = () => set(!open);
 
-    //const handleMouseEnter = () => set(true);
-
-    // const handleMouseLeave = () => set(false);
-
     const navToPage = (e) => {
         const a = document.createElement('a');
         a.href = e.target.href;
-        console.debug(e.target.href);
         e.preventDefault();
         set(false);
         navigate(a.pathname);
     };
 
+    // animate
     useChain(open ? [toggleRef, menuRef] : [menuRef, toggleRef], [0, open ? 0.1 : 0.6])
 
     return (

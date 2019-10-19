@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "/frontend-demo"
+  to = "https://gallant-hamilton-ca3fca.netlify.com/"
+  status = 301

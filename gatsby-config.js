@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 const targetAddress = new URL(process.env.TARGET_ADDRESS || `https://www.elijahboston.com`);
 
 module.exports = {

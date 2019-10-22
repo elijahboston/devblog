@@ -1,21 +1,7 @@
 import styled, { createGlobalStyle } from "styled-components"
 
-// Increase base font size to scale things up
-// for high dpi displays
-export const retinaStyle = `
-  @media
-  (-webkit-min-device-pixel-ratio: 2),
-  (min-resolution: 192dpi) {
-      html {
-        font-size: 24px;
-      }
-  }
-`
 
 export const GlobalStyle = createGlobalStyle`
-
-  ${retinaStyle}
-
   body {
     background-color: ${props => props.theme.bgColor};
     color: ${props => props.theme.textColor};

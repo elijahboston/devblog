@@ -5,4 +5,5 @@ export { default as MobileMenu } from "./mobile-menu"
 export { default as ExternalLink } from "./external-link"
 export { default as PostListItem } from "./post-list-item"
 export { default as PostLink } from "./post-link"
+export { default as ProjectItem } from './project-item';
 export { default as SEO } from "./seo"
